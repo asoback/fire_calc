@@ -1,0 +1,49 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.4;
+
+  margin: auto;
+  padding: 0 10px;
+  word-wrap: break-word;
+
+  color: #363636;
+  background: #efefef;
+
+  text-rendering: optimizeLegibility;
+  display: block;
+
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+h1, h2, h4 {
+  color: #363636;
+  font-weight: 600;
+}
+
+.container {
+  display: block;
+  margin: 0;
+  justify-content: center;
+  text-align: center;
+}
+
+.calculator_section {
+  justify-content: center;
+  text-align: center;
+  display: block;
+}
+
+.form-section {
+  border: solid #dbdbdb 1px;
+  border-radius: 4px;
+  padding: 3px;
+  margin: auto;
+  max-width: 50%;
+  display: block;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #dbdbdb;
+}

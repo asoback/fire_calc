@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Fire Calc (Working Title)</title>
+    <script type="module" src="./index.js"></script>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Financially Independent, Retired Early</h1>
+      <h4>Know your numbers!</h4>
+      <p>Set your goals, and calculate what it will take to reach them.</p>
+
+      <hr>
+
+      <div class="calculator_section">
+        <h2>What is your fire number</h2>
+        <h4>How much money do you need invested before you can retire early?</h4>
+        <small>Assuming the market continues to average up, throughout the remainder of your life</small>
+
+        <div class="form-section">
+          <label for="retirement_monthly_income">Estimated monthly spending in (early) retirement</label>
+          <input id="retirement_monthly_income" type="number" value="3000" step="100">
+          <p id="fire_number"></p>
+        </div>
+      </div>
+
+      <hr>
+      <div class="calculator_section">
+        <h2>What is your required savings rate</h2>
+        <h4>How much you can save determines how fast you can get there</h4>
+        <div class="form-section">
+          <label for="current_age">Current Age</label>
+          <input id="current_age" type="number" value="30" step="1">
+          <label for="fire_age">Early Retirement Age Goal</label>
+          <input id="fire_age" type="number" value="45" step="1">
+          <label for="current_investments">Current Investments</label>
+          <input id="current_investments" type="number" value="10000" step="1000">
+          <label for="estimated_returns">Estimated Annual Investment Returns</label>
+          <input id="estimated_returns" type="number" value="8" step="1">%
+          <label for="investment_goal">Investment Goal</label>
+          <input id="investment_goal" type="number" value="1000000" step="1000">
+
+          <p id="fire_savings"></p>
+        </div>
+      </div>
+
+      <!--
+      <div class="calculator_section">
+        <h1>What is your required pre-tax income</h1>
+        <div class="form-section">
+          <label for="monthly_spending">Monthly Spending</label>
+          <input id="monthly_spending" type="number" value="3000" step="100">
+          <label for="monthly_investing">Monthly Investing</label>
+          <input id="monthly_investing" type="number" value="3000" step="100">
+          <label for="state">state</label>
+          <select id="state">
+            <option>AL</option>
+            <option>AK</option>
+            <option>AZ</option>
+            <option>AR</option>
+            <option>CA</option>
+            <option>CO</option>
+            <option>CT</option>
+            <option>DE</option>
+            <option>FL</option>
+            <option>GA</option>
+            <option>HI</option>
+            <option>ID</option>
+            <option>IL</option>
+            <option>IN</option>
+            <option>IA</option>
+            <option>KS</option>
+            <option>KY</option>
+            <option>LA</option>
+            <option>ME</option>
+            <option>MD</option>
+            <option>MA</option>
+            <option>MI</option>
+            <option>MN</option>
+            <option>MS</option>
+            <option>MO</option>
+            <option>MT</option>
+            <option>NE</option>
+            <option>NV</option>
+            <option>NH</option>
+            <option>NJ</option>
+            <option>NM</option>
+            <option>NY</option>
+            <option>NC</option>
+            <option>ND</option>
+            <option>OH</option>
+            <option>OK</option>
+            <option>OR</option>
+            <option>PA</option>
+            <option>RI</option>
+            <option>SC</option>
+            <option>SD</option>
+            <option>TN</option>
+            <option>TX</option>
+            <option>UT</option>
+            <option>VT</option>
+            <option>VA</option>
+            <option>WA</option>
+            <option>WV</option>
+            <option>WI</option>
+            <option>WY</option>
+          </select>
+        </div>
+      </div>
+    -->
+
+    </div>
+  </body>
+</html>
