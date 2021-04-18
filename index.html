@@ -21,9 +21,9 @@
 
         <div class="form-section">
           <label for="retirement_monthly_income">Estimated monthly spending in (early) retirement</label>
-          <input id="retirement_monthly_income" type="number" value="3000" step="100">
+          <input id="retirement_monthly_income" type="number" value="3000" step="100" min="0">
           <label for="safe_withdrawal_rate">Safe withdrawal rate</label>
-          <input id="safe_withdrawal_rate" type="number" value="4" step=".5">%
+          <input id="safe_withdrawal_rate" type="number" value="4" step=".5" min="0">%
 
           <p id="fire_number"></p>
         </div>
@@ -38,13 +38,13 @@
           <label for="current_age">Current Age</label>
           <input id="current_age" type="number" value="30" step="1">
           <label for="fire_age">Early Retirement Age Goal</label>
-          <input id="fire_age" type="number" value="45" step="1">
+          <input id="fire_age" type="number" value="45" step="1" min="0">
           <label for="current_investments">Current Investments</label>
           <input id="current_investments" type="number" value="10000" step="1000">
           <label for="estimated_returns">Estimated Annual Investment Returns</label>
-          <input id="estimated_returns" type="number" value="8" step="1">%
+          <input id="estimated_returns" type="number" value="8" step="1" min="0">%
           <label for="investment_goal">Investment Goal</label>
-          <input id="investment_goal" type="number" value="1000000" step="1000">
+          <input id="investment_goal" type="number" value="1000000" step="1000" min="0">
 
           <p id="fire_savings"></p>
         </div>
@@ -62,24 +62,32 @@
           <label for="current_additions">Monthly additions</label>
           <input id="current_additions" type="number" value="1000" step="100">
           <label for="estimated_returns_2">Estimated Annual Investment Returns</label>
-          <input id="estimated_returns_2" type="number" value="8" step="1">%
+          <input id="estimated_returns_2" type="number" value="8" step="1"  min="0">%
           <label for="investment_goal_2">Investment Goal</label>
-          <input id="investment_goal_2" type="number" value="1000000" step="1000">
+          <input id="investment_goal_2" type="number" value="1000000" step="1000" min="0">
 
           <p id="predicted_fire_age"></p>
         </div>  
       </div>
 
-      <!-- TODO
       <hr>
       
       <div class="calculator_section">
-        <h2>What age can you coast (stop saving) if you plan to keep working.</h2>
+        <h2>Compound Interest Calculator</h2>
         <div class="form-section">
+          <label for="beginning_principle">Beginning Principle</label>
+          <input id="beginning_principle" type="number" value="1000" step="100">
+          <label for="monthly_addition">Monthly Addition</label>
+          <input id="monthly_addition" type="number" value="1000" step="100">
+          <label for="years_to_compound">Years to compound</label>
+          <input id="years_to_compound" type="number" value="30" step="1" min="0">
+          <label for="rate_of_return">Rate of return</label>
+          <input id="rate_of_return" type="number" value="30" step="1" min="0">
 
+          <p id="compound_interest"></p>
 
         </div>  
-      </div> -->
+      </div>
    
 
     </div>
