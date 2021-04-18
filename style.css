@@ -19,6 +19,8 @@ body {
 h1, h2, h4 {
   color: #363636;
   font-weight: 600;
+  padding: 0, 3px;
+  margin:auto;
 }
 
 .container {
@@ -37,13 +39,24 @@ h1, h2, h4 {
 .form-section {
   border: solid #dbdbdb 1px;
   border-radius: 4px;
-  padding: 3px;
-  margin: auto;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
   max-width: 50%;
+  display: block;
+}
+
+.form-section label {
   display: block;
 }
 
 hr {
   border: none;
   border-top: 1px solid #dbdbdb;
+}
+
+input[type="number"] {
+  text-align: center;
 }

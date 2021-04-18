@@ -22,11 +22,15 @@
         <div class="form-section">
           <label for="retirement_monthly_income">Estimated monthly spending in (early) retirement</label>
           <input id="retirement_monthly_income" type="number" value="3000" step="100">
+          <label for="safe_withdrawal_rate">Safe withdrawal rate</label>
+          <input id="safe_withdrawal_rate" type="number" value="4" step=".5">%
+
           <p id="fire_number"></p>
         </div>
       </div>
 
       <hr>
+
       <div class="calculator_section">
         <h2>What is your required savings rate</h2>
         <h4>How much you can save determines how fast you can get there</h4>
@@ -46,70 +50,37 @@
         </div>
       </div>
 
-      <!--
+      <hr>
+
       <div class="calculator_section">
-        <h1>What is your required pre-tax income</h1>
+        <h2>What age can you retire at your current savings amount</h2>
         <div class="form-section">
-          <label for="monthly_spending">Monthly Spending</label>
-          <input id="monthly_spending" type="number" value="3000" step="100">
-          <label for="monthly_investing">Monthly Investing</label>
-          <input id="monthly_investing" type="number" value="3000" step="100">
-          <label for="state">state</label>
-          <select id="state">
-            <option>AL</option>
-            <option>AK</option>
-            <option>AZ</option>
-            <option>AR</option>
-            <option>CA</option>
-            <option>CO</option>
-            <option>CT</option>
-            <option>DE</option>
-            <option>FL</option>
-            <option>GA</option>
-            <option>HI</option>
-            <option>ID</option>
-            <option>IL</option>
-            <option>IN</option>
-            <option>IA</option>
-            <option>KS</option>
-            <option>KY</option>
-            <option>LA</option>
-            <option>ME</option>
-            <option>MD</option>
-            <option>MA</option>
-            <option>MI</option>
-            <option>MN</option>
-            <option>MS</option>
-            <option>MO</option>
-            <option>MT</option>
-            <option>NE</option>
-            <option>NV</option>
-            <option>NH</option>
-            <option>NJ</option>
-            <option>NM</option>
-            <option>NY</option>
-            <option>NC</option>
-            <option>ND</option>
-            <option>OH</option>
-            <option>OK</option>
-            <option>OR</option>
-            <option>PA</option>
-            <option>RI</option>
-            <option>SC</option>
-            <option>SD</option>
-            <option>TN</option>
-            <option>TX</option>
-            <option>UT</option>
-            <option>VT</option>
-            <option>VA</option>
-            <option>WA</option>
-            <option>WV</option>
-            <option>WI</option>
-            <option>WY</option>
-          </select>
-        </div>
+          <label for="current_age_2">Current Age</label>
+          <input id="current_age_2" type="number" value="30" step="1">
+          <label for="current_investments_2">Current Investments</label>
+          <input id="current_investments_2" type="number" value="10000" step="1000">
+          <label for="current_additions">Monthly additions</label>
+          <input id="current_additions" type="number" value="1000" step="100">
+          <label for="estimated_returns_2">Estimated Annual Investment Returns</label>
+          <input id="estimated_returns_2" type="number" value="8" step="1">%
+          <label for="investment_goal_2">Investment Goal</label>
+          <input id="investment_goal_2" type="number" value="1000000" step="1000">
+
+          <p id="predicted_fire_age"></p>
+        </div>  
       </div>
-    -->
+
+      <!-- TODO
+      <hr>
+      
+      <div class="calculator_section">
+        <h2>What age can you coast (stop saving) if you plan to keep working.</h2>
+        <div class="form-section">
+
+
+        </div>  
+      </div> -->
+   
 
     </div>
   </body>
