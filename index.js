@@ -76,7 +76,7 @@ const ToMoney = (num) => {
 
 const RunCalculateFireNumber = () => {
   const fire_num = CalculateFireNumber(retirement_monthly_income.value, safe_withdrawal_rate.value / 100);
-  fire_number.textContent = ToMoney(fire_num);
+  fire_number.textContent = "Financial independence at " + ToMoney(fire_num);
   return Math.round(fire_num * 100) / 100;
 };
 
