@@ -33,7 +33,7 @@ h1, h2, h4 {
 .calculator_section {
   justify-content: center;
   text-align: center;
-  display: block;
+  display: inline-block;
 }
 
 .form-section {
@@ -44,8 +44,13 @@ h1, h2, h4 {
   margin-bottom: 20px;
   margin-right: auto;
   margin-left: auto;
-  max-width: 50%;
-  display: block;
+  display: flex;
+  flex-direction: row;
+}
+
+.form-column {
+  flex: 50%;
+
 }
 
 .form-section label {

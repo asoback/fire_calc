@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Compound Interest Calculator</title>
+    <script type="module" src="./compound_interest.js"></script>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Compound Interest</h1>
+      <h4>Subtitle</h4>
+      <p>description.</p>
+
+      <hr>
+
+      <div class="calculator_section">
+        <h2>Compound Interest Calculator</h2>
+        <div class="form-section">
+          <div class="form-column">
+            <label for="beginning_principle">Beginning Principle</label>
+            <input id="beginning_principle" type="number" value="1000" step="100">
+            <label for="monthly_addition">Monthly Addition</label>
+            <input id="monthly_addition" type="number" value="1000" step="100">
+            <label for="years_to_compound">Years to compound</label>
+            <input id="years_to_compound" type="number" value="30" step="1" min="0">
+            <label for="rate_of_return">Rate of return</label>
+            <input id="rate_of_return" type="number" value="7" step="1" min="0">%
+          </div>
+          <p id="compound_interest"></p>
+
+        </div>  
+      </div>
+
+      <a href="./index.html">Click here for a FIRE calculator.</a>
+    </div>
+  </body>
+</html>

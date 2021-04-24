@@ -1,24 +1,14 @@
+import { ToMoney } from './utils.js';
+
 /* Document */
-const retirement_monthly_income = document.getElementById('retirement_monthly_income');
 const current_age = document.getElementById('current_age');
 const fire_age = document.getElementById('fire_age');
-const current_investments = document.getElementById('current_investments');
-const estimated_returns = document.getElementById('estimated_returns');
-const investment_goal = document.getElementById('investment_goal');
+const retirement_monthly_income = document.getElementById('retirement_monthly_income');
 const safe_withdrawal_rate = document.getElementById('safe_withdrawal_rate');
-
-const current_age_2 = document.getElementById('current_age_2');
-const current_investments_2 = document.getElementById('current_investments_2');
-const estimated_returns_2 = document.getElementById('estimated_returns_2');
-const investment_goal_2 = document.getElementById('investment_goal_2');
+const current_investments = document.getElementById('current_investments');
 const current_additions = document.getElementById('current_additions');
+const estimated_returns = document.getElementById('estimated_returns');
 
-const beginning_principle = document.getElementById('beginning_principle');
-const monthly_addition = document.getElementById('monthly_addition');
-const years_to_compound = document.getElementById('years_to_compound');
-const rate_of_return = document.getElementById('rate_of_return');
-
-const compound_interest = document.getElementById('compound_interest');
 const predicted_fire_age = document.getElementById('predicted_fire_age');
 const fire_number = document.getElementById('fire_number');
 const fire_savings = document.getElementById('fire_savings');
@@ -45,12 +35,6 @@ const SavingsRateCalculator = (years, current_invest, rate, target, n=12) => {
   return Math.round(save_monthly * 100) /100;
 };
 
-const CalculateCompoundInterest = (principle, addition, years, rate, n=12) => {
-  const total_for_principle = principle * (Math.pow((1 + (rate/n)), (n*years)));
-  const total_for_addition = addition * ((Math.pow(1 + rate/n, (n * years)) - 1) / (rate/n)) * (1+rate / n);
-  return total_for_principle +  total_for_addition;
-};
-
 // Fire age calc
 const FireAgeCalculator = (current_age, current_investments, current_invest, rate, target, n=12) => {
   let val = Number(current_investments);
@@ -64,13 +48,6 @@ const FireAgeCalculator = (current_age, current_investments, current_invest, rat
   return Math.round(age * 10) / 10;
 };
 
-/* Utils */
-
-const ToMoney = (num) => {
- const dollars = Math.round(num * 100) / 100;
- return "$" + dollars.toLocaleString();
-};
-
 
 /* Form Inputs */
 
@@ -80,116 +57,66 @@ const RunCalculateFireNumber = () => {
   return Math.round(fire_num * 100) / 100;
 };
 
-retirement_monthly_income.onchange = () => {
-  const fire_num = RunCalculateFireNumber();
-  investment_goal.value = fire_num;
-  RunSavingsRateCalculator();
-  investment_goal_2.value = fire_num;
-  RunFireAgeCalculator();
-};
-
-safe_withdrawal_rate.onchange = () => {
-  const fire_num = RunCalculateFireNumber();
-  investment_goal.value = fire_num;
-  RunSavingsRateCalculator();
-  investment_goal_2.value = fire_num;
-  RunFireAgeCalculator();
-};
-
-const RunSavingsRateCalculator = () => {
+const RunSavingsRateCalculator = (goal) => {
   const to_save = SavingsRateCalculator(
     fire_age.value - current_age.value,
     current_investments.value,
     estimated_returns.value /100,
-    investment_goal.value);
+    goal);
   fire_savings.textContent = "Save " + ToMoney(to_save) + " monthly in order to be financially independent in " + (fire_age.value - current_age.value) + " years"
   return to_save;
 };
 
-current_age.onchange = () => {
-  const to_save = RunSavingsRateCalculator();
-  current_age_2.value = current_age.value;
-  RunFireAgeCalculator();
-};
-
-fire_age.onchange = () => {
-  RunSavingsRateCalculator();
-};
-
-current_investments.onchange = () => {
-  RunSavingsRateCalculator();
-};
-
-estimated_returns.onchange = () => {
-  RunSavingsRateCalculator();
-};
-
-investment_goal.onchange = () => {
-  RunSavingsRateCalculator();
-  investment_goal_2.value = investment_goal.value;
-  RunFireAgeCalculator();
-};
-
-const RunFireAgeCalculator = () => {
+const RunFireAgeCalculator = (goal) => {
   const age = FireAgeCalculator(
-    current_age_2.value,
-    current_investments_2.value,
+    current_age.value,
+    current_investments.value,
     current_additions.value,
-    estimated_returns_2.value / 100,
-    investment_goal_2.value);
+    estimated_returns.value / 100,
+    goal);
   predicted_fire_age.textContent = "Expect to retire at age " + age;
 };
 
-current_age_2.onchange = () => {
-  RunFireAgeCalculator();
-  current_age.value = current_age_2.value;
-  RunSavingsRateCalculator();
+
+const RunAllCalculatorFunctions = () => {
+  let investment_goal = RunCalculateFireNumber();
+  RunSavingsRateCalculator(investment_goal);
+  RunFireAgeCalculator(investment_goal);
+};
+
+
+
+current_age.onchange = () => {
+  RunAllCalculatorFunctions();
+};
+
+fire_age.onchange = () => {
+  RunAllCalculatorFunctions();
+};
+
+retirement_monthly_income.onchange = () => {
+  RunAllCalculatorFunctions();
+};
+
+safe_withdrawal_rate.onchange = () => {
+  RunAllCalculatorFunctions();
+};
+
+current_investments.onchange = () => {
+  RunAllCalculatorFunctions();
 };
 
 current_additions.onchange = () => {
-  RunFireAgeCalculator();
+  RunAllCalculatorFunctions();
 };
 
-current_investments_2.onchange = () => {
-  RunFireAgeCalculator();
+estimated_returns.onchange = () => {
+  RunAllCalculatorFunctions();
 };
 
-estimated_returns_2.onchange = () => {
-  RunFireAgeCalculator();
-};
 
-investment_goal_2.onchange = () => {
-  RunFireAgeCalculator();
-};
 
-const RunCompoundInterestCalc = () => {
-  const end_val = CalculateCompoundInterest(
-    beginning_principle.value,
-    monthly_addition.value,
-    years_to_compound.value,
-    rate_of_return.value / 100
-  );
-  compound_interest.textContent = "Ending value: " + ToMoney(end_val);
-};  
 
-beginning_principle.onchange = () => {
-  RunCompoundInterestCalc();
-};
-
-monthly_addition.onchange = () => {
-  RunCompoundInterestCalc();
-};
-
-years_to_compound.onchange = () => {
-  RunCompoundInterestCalc();
-};
-
-rate_of_return.onchange = () => {
-  RunCompoundInterestCalc();
-};
 
 /* On start */
-RunSavingsRateCalculator();
-RunCalculateFireNumber();
-RunFireAgeCalculator();
-RunCompoundInterestCalc();
+RunAllCalculatorFunctions();
