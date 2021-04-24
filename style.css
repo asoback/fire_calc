@@ -33,7 +33,7 @@ h1, h2, h4 {
 .calculator_section {
   justify-content: center;
   text-align: center;
-  display: inline-block;
+  display: block;
 }
 
 .form-section {
