@@ -37,9 +37,15 @@ const SavingsRateCalculator = (years, current_invest, rate, target, n=12) => {
   // PMT × {[(1 + r/n)(nt) - 1] / (r/n)} × (1+r/n)
   const new_target = target - Math.round(total_for_principle);
 
-  const save_monthly = 
-    new_target / (((Math.pow((1 + rate/n), (n*years)) -1 ) / (rate/n)) * (1 + (rate/n)));
-  
+  let save_monthly = 0;
+  if (rate > 0.0) {
+    save_monthly = 
+      new_target / (((Math.pow((1 + rate/n), (n*years)) -1 ) / (rate/n)) * (1 + (rate/n)));
+  } else {
+    save_monthly = new_target / (years * n);
+  }
+
+
   return Math.round(save_monthly * 100) /100;
 };
 
@@ -169,7 +175,7 @@ const RunFireAgeCalculator = (goal) => {
     current_additions.value,
     Number(estimated_returns.value) / 100,
     goal);
-  predicted_fire_age.textContent = "Expect to retire at age " + age;
+  predicted_fire_age.textContent = "Expect to retire at age " + age + " with your current monthly investment rate";
   return age - current_age.value;
 };
 
