@@ -12,6 +12,7 @@ const estimated_returns = document.getElementById('estimated_returns');
 const predicted_fire_age = document.getElementById('predicted_fire_age');
 const fire_number = document.getElementById('fire_number');
 const fire_savings = document.getElementById('fire_savings');
+const fire_savings_age = document.getElementById('fire_savings_age');
 const yearly_retirement_spending = document.getElementById('yearly_retirement_spending');
 
 const investment_chart = document.getElementById('investment_chart');
@@ -140,6 +141,20 @@ const GenerateChart = (investment_target, investment_target_monthly_addition, ma
           labelString: "Age"
         }
       }]
+    },
+    annotation: {
+      annotations: [{
+        type: 'line',
+        mode: 'horizontal',
+        scaleID: 'y-axis-0',
+        value: investment_target,
+        borderColor: 'rgb(175, 0, 0)',
+        borderWidth: 1,
+        label: {
+          enabled: false,
+          content: 'FIRE number'
+        }
+      }]
     }
   };
 
@@ -154,7 +169,7 @@ const GenerateChart = (investment_target, investment_target_monthly_addition, ma
 
 const RunCalculateFireNumber = () => {
   const fire_num = CalculateFireNumber(retirement_monthly_income.value, safe_withdrawal_rate.value / 100);
-  fire_number.textContent = "Financial independence at " + ToMoney(fire_num);
+  fire_number.textContent = ToMoney(fire_num);
   return Math.round(fire_num * 100) / 100;
 };
 
@@ -164,7 +179,8 @@ const RunSavingsRateCalculator = (goal) => {
     current_investments.value,
     Number(estimated_returns.value) /100,
     goal);
-  fire_savings.textContent = "Save " + ToMoney(to_save) + " monthly in order to be financially independent in " + (fire_age.value - current_age.value) + " years"
+  fire_savings.textContent =ToMoney(to_save)
+  fire_savings_age.textContent = (fire_age.value - current_age.value);
   return to_save;
 };
 
@@ -175,14 +191,14 @@ const RunFireAgeCalculator = (goal) => {
     current_additions.value,
     Number(estimated_returns.value) / 100,
     goal);
-  predicted_fire_age.textContent = "Expect to retire at age " + age + " with your current monthly investment rate";
+  predicted_fire_age.textContent = age;
   return age - current_age.value;
 };
 
 const RunYearlySpendingCalc = () => {
   const monthly = Number(retirement_monthly_income.value);
   const yearly = MonthlyToYearly(monthly);
-  yearly_retirement_spending.textContent = "Spending " + ToMoney(yearly) + " per year";
+  yearly_retirement_spending.textContent = ToMoney(yearly);
 };
 
 const RunAllCalculatorFunctions = () => {
