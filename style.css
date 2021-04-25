@@ -90,3 +90,21 @@ input[type="number"] {
   padding: 0, 3px;
   margin:auto;
 }
+
+.button {
+ background-color: #0000CC;
+ max-width: 50%;
+ border-radius: 3px;
+ padding: 3px;
+ margin: auto;
+}
+.button a {
+  color: #efefef;
+}
+.button a:visited {
+  color: #efefef;
+}
+
+.button:hover {
+  background-color: #000099;
+}
