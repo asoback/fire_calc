@@ -32,6 +32,7 @@ const SavingsRateCalculator = (years, current_invest, rate, target, n=12) => {
   // Compound interest for principal:
   // P(1+r/n)(nt)
   const total_for_principle = current_invest * (Math.pow((1 + (rate/n)), (n*years)));
+
   // Future value with regular investment:
   // PMT × {[(1 + r/n)(nt) - 1] / (r/n)} × (1+r/n)
   const new_target = target - Math.round(total_for_principle);

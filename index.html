@@ -9,16 +9,15 @@
   </head>
   <body>
     <div class="container">
-      <h1>Financially Independent, Retired Early</h1>
-      <h4>Know your numbers!</h4>
-      <p>Set your goals, and calculate what it will take to reach them.</p>
-
-      <hr>
+      <div class="navbar">
+        <h1>Early Retirement and Financial Independence</h1>
+        <h4>A caclulator to help you budget for freedom</h4>
+      </div>
 
       <div class="calculator_section">
-        <h2>What is your FIRE number</h2>
-        <h4>What will it take to reach your goals?</h4>
-        <small>*Assuming the market continues to average up, throughout the remainder of your life</small>
+        <h2>What will it take to reach your goals</h2>
+        <h4>Compare the requirements to meet your target F.I.R.E date 
+          and the outcome of your current monthly investments, and adjust accordingly.</h4>
 
         <div class="form-section">
           <div class="form-column">
@@ -28,16 +27,16 @@
             <input id="fire_age" type="number" value="45" step="1" min="0">
             <label for="retirement_monthly_income">Monthly Spending</label>
             <input id="retirement_monthly_income" type="number" value="3000" step="100" min="0">
-            <label for="safe_withdrawal_rate">Safe Withdrawal Rate</label>
-            <input id="safe_withdrawal_rate" type="number" value="4" step=".5" min="0">%
+            <label for="safe_withdrawal_rate">Safe Withdrawal Rate %</label>
+            <input id="safe_withdrawal_rate" type="number" value="4" step=".5" min="0">
           </div>
           <div class="form-column">
             <label for="current_investments">Current Investments</label>
             <input id="current_investments" type="number" value="10000" step="1000">
             <label for="current_additions">Monthly Additions</label>
             <input id="current_additions" type="number" value="1000" step="100">
-            <label for="estimated_returns">Annual Investment Returns</label>
-            <input id="estimated_returns" type="number" value="7" step="1" min="0">%
+            <label for="estimated_returns">Annual Investment Returns %</label>
+            <input id="estimated_returns" type="number" value="7" step="1" min="0">
           </div>
         </div>
       </div>
@@ -48,6 +47,8 @@
       <p id="yearly_retirement_spending"></p>
 
       <hr>
+      <small>*These results assume the market continues to average up,
+        throughout the remainder of your life</small>
 
       <div id="investments-chart-div">
         <canvas class="chart" id="investment_chart"></canvas>
