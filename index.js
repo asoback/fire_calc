@@ -12,11 +12,15 @@ const estimated_returns = document.getElementById('estimated_returns');
 const predicted_fire_age = document.getElementById('predicted_fire_age');
 const fire_number = document.getElementById('fire_number');
 const fire_savings = document.getElementById('fire_savings');
+const yearly_retirement_spending = document.getElementById('yearly_retirement_spending');
 
 const investment_chart = document.getElementById('investment_chart');
 var chart;
 
 /* Calculators */
+const MonthlyToYearly = (monthly) => {
+  return monthly * 12;
+}
 
 // Calculate fire number
 const CalculateFireNumber = (monthly_spending, swr) => {
@@ -168,12 +172,18 @@ const RunFireAgeCalculator = (goal) => {
   return age - current_age.value;
 };
 
+const RunYearlySpendingCalc = () => {
+  const monthly = Number(retirement_monthly_income.value);
+  const yearly = MonthlyToYearly(monthly);
+  yearly_retirement_spending.textContent = "Spending " + ToMoney(yearly) + " per year";
+};
 
 const RunAllCalculatorFunctions = () => {
   const investment_goal = RunCalculateFireNumber();
   const target = RunSavingsRateCalculator(investment_goal);
   const age = RunFireAgeCalculator(investment_goal);
   GenerateChart(investment_goal, target, age);
+  RunYearlySpendingCalc();
 };
 
 
