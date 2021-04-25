@@ -13,6 +13,9 @@ const predicted_fire_age = document.getElementById('predicted_fire_age');
 const fire_number = document.getElementById('fire_number');
 const fire_savings = document.getElementById('fire_savings');
 
+const investment_chart = document.getElementById('investment_chart');
+var chart;
+
 /* Calculators */
 
 // Calculate fire number
@@ -41,13 +44,100 @@ const FireAgeCalculator = (current_age, current_investments, current_invest, rat
   let age = Number(current_age);
 
   while (val < target) {
-    val = Number(current_invest) + val * (1 + Number(rate)/n);
+    val = Number(current_invest) + val * (1 + rate/n);
     age = age + 1/n;
   }
 
   return Math.round(age * 10) / 10;
 };
 
+/* Charting */
+
+const GenerateChart = (investment_target, investment_target_monthly_addition, max_num_years, n=12) => {
+  const data = {};
+
+  // Generate Years
+  let years = [];
+  let num_years = 0;
+  if (fire_age.value - current_age.value < (2/3) * max_num_years) {
+    num_years = Math.round((fire_age.value - current_age.value) * 1.5) + 2;
+  } else {
+    num_years = Math.round(max_num_years) + 2;
+  }
+  const age = Number(current_age.value);
+  for (let i = 0; i < num_years; i++) {
+    years.push(age + i);
+  }
+  data.labels = years;
+
+  // Generate Investment Data
+  const starting_value = Number(current_investments.value);
+  const monthly_addition = Number(current_additions.value);
+  const rate = 1 + ((Number(estimated_returns.value)/100) / n);
+  let investment_goal_data = [starting_value];
+  let investment_current_data = [starting_value];
+  for (let i = 0; i < num_years - 1; i++) {
+    let investment_goal_next = investment_goal_data[investment_goal_data.length - 1];
+    let investment_current_next = investment_current_data[investment_current_data.length - 1];
+    for (let j = 0; j < n; j++) {
+      investment_goal_next = investment_goal_next * rate + investment_target_monthly_addition;
+      investment_current_next = investment_current_next * rate + monthly_addition;
+    }
+    investment_goal_data.push(Math.round(investment_goal_next * 100) / 100);
+    investment_current_data.push(Math.round(investment_current_next * 100) / 100);
+  }
+
+  const max_ticks = Math.round(investment_target * 1.5);
+  
+  data.datasets = [
+    {
+      label: 'Investment Goal',
+      backgroundColor: 'rgba(0, 0, 150, 0)',
+      borderColor: 'rgb(0, 0, 200)',
+      data: investment_goal_data
+    },
+    {
+      label: 'Current Investment Rate',
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      borderColor: 'rgb(0, 0, 0)',
+      data: investment_current_data
+    }
+  ];
+
+  let ctx = investment_chart.getContext('2d');
+  if (chart) {
+    chart.destroy();
+  }
+
+  const options = {
+    scales: {
+      yAxes: [{
+        stacked: false,
+        ticks: {
+          beginAtZero: true,
+          min: 0,
+          max: max_ticks
+        },
+        scaleLabel: {
+          display: true,
+          labelString: "Invested"
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: "Age"
+        }
+      }]
+    }
+  };
+
+  chart = new Chart(ctx, {
+    type: "line",
+    data: data,
+    options: options
+  });	
+}
 
 /* Form Inputs */
 
@@ -61,7 +151,7 @@ const RunSavingsRateCalculator = (goal) => {
   const to_save = SavingsRateCalculator(
     fire_age.value - current_age.value,
     current_investments.value,
-    estimated_returns.value /100,
+    Number(estimated_returns.value) /100,
     goal);
   fire_savings.textContent = "Save " + ToMoney(to_save) + " monthly in order to be financially independent in " + (fire_age.value - current_age.value) + " years"
   return to_save;
@@ -72,16 +162,18 @@ const RunFireAgeCalculator = (goal) => {
     current_age.value,
     current_investments.value,
     current_additions.value,
-    estimated_returns.value / 100,
+    Number(estimated_returns.value) / 100,
     goal);
   predicted_fire_age.textContent = "Expect to retire at age " + age;
+  return age - current_age.value;
 };
 
 
 const RunAllCalculatorFunctions = () => {
-  let investment_goal = RunCalculateFireNumber();
-  RunSavingsRateCalculator(investment_goal);
-  RunFireAgeCalculator(investment_goal);
+  const investment_goal = RunCalculateFireNumber();
+  const target = RunSavingsRateCalculator(investment_goal);
+  const age = RunFireAgeCalculator(investment_goal);
+  GenerateChart(investment_goal, target, age);
 };
 
 
