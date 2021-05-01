@@ -162,7 +162,7 @@ const GenerateChart = (investment_target, investment_target_monthly_addition, ma
     type: "line",
     data: data,
     options: options
-  });	
+  });
 }
 
 /* Form Inputs */

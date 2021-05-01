@@ -3,16 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Compound Interest Calculator</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script type="module" src="./compound_interest.js"></script>
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <div class="container">
-      <h1>Compound Interest</h1>
-      <h4>Subtitle</h4>
-      <p>description.</p>
-
-      <hr>
 
       <div class="calculator_section">
         <h2>Compound Interest Calculator</h2>
@@ -32,9 +28,16 @@
       <p id="compound_interest"></p>
       
       <hr>
+
+      <div id="interest-chart-div">
+        <canvas class="chart" id="interest_chart"></canvas>
+        <div class="right-container">
+          <cite>Chart made with <a href="https://www.chartjs.org/" target="_blank" rel="noopener noreferrer">Chart.js</a></cite>
+        </div>
+      </div>  
       
       <div class="button">
-        <a href="./index.html">Click here for a FIRE calculator.</a>
+        <a href="./index.html">Click here for a FIRE age calculator.</a>
       </div>
     </div>
   </body>
