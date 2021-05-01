@@ -40,7 +40,6 @@ const GenerateChart = (monthly = true) => {
     r = Number(rate_of_return.value) / 100;
     n = 1;
   }
-  console.log("RATE ", r);
 
   for (let i = 0; i < num_years; i++) {
     let principle_next = principle[i];
@@ -57,13 +56,13 @@ const GenerateChart = (monthly = true) => {
   data.datasets = [
     {
       label: 'Principle',
-      backgroundColor: 'rgba(0, 0, 150, 1)',
+      backgroundColor: 'rgba(0, 0, 150, .5)',
       borderColor: 'rgb(0, 0, 150)',
       data: principle
     },
     {
       label: 'Interest Earned',
-      backgroundColor: 'rgba(0, 150, 0, 1)',
+      backgroundColor: 'rgba(0, 150, 0, .5)',
       borderColor: 'rgb(0, 150, 0)',
       data: interest
     }
@@ -81,6 +80,12 @@ const GenerateChart = (monthly = true) => {
         scaleLabel: {
           display: true,
           labelString: "Value"
+        },
+        ticks: {
+          beginAtZero: true, 
+          callback: function(value, index, values) {
+            return ToMoney(value);
+          }
         }
       }],
       xAxes: [{

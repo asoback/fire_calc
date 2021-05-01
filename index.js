@@ -128,7 +128,10 @@ const GenerateChart = (investment_target, investment_target_monthly_addition, ma
         ticks: {
           beginAtZero: true,
           min: 0,
-          max: max_ticks
+          max: max_ticks,
+          callback: function(value, index, values) {
+            return ToMoney(value);
+          }
         },
         scaleLabel: {
           display: true,
