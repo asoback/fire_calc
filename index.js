@@ -104,14 +104,14 @@ const GenerateChart = (investment_target, investment_target_monthly_addition, ma
   data.datasets = [
     {
       label: 'Investment Goal',
-      backgroundColor: 'rgba(0, 0, 150, 0)',
-      borderColor: 'rgb(0, 0, 200)',
+      backgroundColor: 'rgba(0, 150, 0, 0)',
+      borderColor: 'rgb(0, 150, 0)',
       data: investment_goal_data
     },
     {
       label: 'Current Investment Rate',
-      backgroundColor: 'rgba(0, 0, 0, 0)',
-      borderColor: 'rgb(0, 0, 0)',
+      backgroundColor: 'rgba(0, 0, 150, 0)',
+      borderColor: 'rgb(0, 0, 150)',
       data: investment_current_data
     }
   ];
@@ -152,7 +152,7 @@ const GenerateChart = (investment_target, investment_target_monthly_addition, ma
         borderWidth: 1,
         label: {
           enabled: false,
-          content: 'FIRE number'
+          content: 'Financial Independence',
         }
       }]
     }

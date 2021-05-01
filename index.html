@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Fire Calc (Working Title)</title>
+    <title>FIRE Calculator</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.js"></script>
     <script type="module" src="./index.js"></script>
@@ -12,13 +12,13 @@
     <div class="container">
       <div class="navbar">
         <h1>Early Retirement and Financial Independence</h1>
-        <h4>A caclulator to help you budget for freedom</h4>
+        <h4>What will it take to reach your goals?</h4>
       </div>
 
       <div class="calculator_section">
-        <h2>What will it take to reach your goals</h2>
-        <h4>Compare the requirements to meet your target F.I.R.E date 
-          and the outcome of your current monthly investments, and adjust accordingly.</h4>
+        <h4>Compare the requirements to meet your target
+          <a href="https://en.wikipedia.org/wiki/FIRE_movement" target="_blank" rel="noopener noreferrer">FIRE</a>
+          date and the outcome of your current monthly investments, and adjust accordingly.</h4>
 
         <div class="form-section">
           <div class="form-column">
@@ -45,7 +45,7 @@
       <p>Financial independence at <strong><span id="fire_number"></span></strong></p>
       <p>Expect to retire at <strong>age <span id="predicted_fire_age"></span></strong> with your current monthly investment rate</p>
       <p>Save <strong><span id="fire_savings"></span> monthly </strong>in order to be financially independent in <span id="fire_savings_age"></span> years</p>
-      <p>Spending <span id="yearly_retirement_spending"></span> per year</p>
+      <p>Planned spending of <span id="yearly_retirement_spending"></span> per year</p>
 
       <hr>
       <small>*These results assume the market continues to average up,
@@ -53,6 +53,9 @@
 
       <div id="investments-chart-div">
         <canvas class="chart" id="investment_chart"></canvas>
+        <div class="float-container">
+          <cite>Chart made with <a href="https://www.chartjs.org/" target="_blank" rel="noopener noreferrer">Chart.js</a></cite>
+        </div>
       </div>  
 
       <hr>

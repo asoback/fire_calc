@@ -60,6 +60,8 @@ h1, h2, h4 {
 hr {
   border: none;
   border-top: 1px solid #dbdbdb;
+  display: block;
+  margin-bottom: 15px;
 }
 
 input[type="number"] {
@@ -69,7 +71,6 @@ input[type="number"] {
 .chart {
   margin-top: none;
   padding: 5px;
-  margin-bottom: 20px;
   max-width: 100%;
   border: 1px solid #dbdbdb;
   border-radius: 3px;
@@ -108,3 +109,13 @@ input[type="number"] {
 .button:hover {
   background-color: #000099;
 }
+
+cite {
+  margin-top: 0;
+  font-size: smaller;
+}
+
+.float-container {
+  text-align: right;
+}
+
