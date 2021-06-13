@@ -135,7 +135,7 @@ const GenerateChart = (investment_target, investment_target_monthly_addition, ma
         },
         scaleLabel: {
           display: true,
-          labelString: "Invested"
+          labelString: "Amount Invested"
         }
       }],
       xAxes: [{

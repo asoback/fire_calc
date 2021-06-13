@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>FIRE Calculator</title>
+    <meta name="description" content="Calculate financial independence and early retirement age with your investment goals. Determine your monthly savings rate to reach your FIRE goal.">
+    <meta name="keywords" content="fire, financial independence, retire early, retired early, finance, budget, savings, early retirement, retirement age, investing, invest, budget help, bugeting">
+    <title>Early Retirement Age Calculator - How soon can you be financially independent at your savings rate?</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.js"></script>
     <script type="module" src="./index.js"></script>
@@ -11,14 +13,15 @@
   <body>
     <div class="container">
       <div class="navbar">
-        <h1>Early Retirement and Financial Independence</h1>
-        <h4>What will it take to reach your goals?</h4>
+        <h1>Early Retirement Age Calculator</h1>
+        <h4>How soon can you be financially independent at your current savings rate?</h4>
+        <h4>What would it take to reach your financial independence goals?</h4>
       </div>
 
       <div class="calculator_section">
         <h4>Compare the requirements to meet your target
           <a href="https://en.wikipedia.org/wiki/FIRE_movement" target="_blank" rel="noopener noreferrer">FIRE</a>
-          date and the outcome of your current monthly investments, and adjust accordingly.</h4>
+          date against against the expected outcome of your current investment habits.</h4>
 
         <div class="form-section">
           <div class="form-column">
@@ -48,7 +51,7 @@
       <p>Planned spending of <span id="yearly_retirement_spending"></span> per year</p>
 
       <hr>
-      <small>*These results assume the market continues to average up,
+      <small>*Remember that these results assume the market continues to average up,
         throughout the remainder of your life</small>
 
       <div id="investments-chart-div">
